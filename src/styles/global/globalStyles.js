@@ -48,7 +48,7 @@ const globalStyles = StyleSheet.create({
     width: '50%',
   },
   inputPaddingVertical: {
-    paddingVertical: isAndroid ? 10 : theme.light.spacing.small,
+    paddingVertical: isAndroid ? 10 : theme.spacing.small,
   },
   negativeZindex: {
     zIndex: -1,

@@ -3,24 +3,19 @@ import {View, Image, TouchableOpacity} from 'react-native'
 
 import {
   CustomTextInput,
-  CustomCheckBox,
   CustomButton,
   CustomLoader,
   CustomAlert,
   RNText,
 } from '../../components/index'
+import WithKeyboardAvoidingView from '../../components/hoc/WithKeyboardAvoidingView'
 
-import {
-  globalMarginStyles as gms,
-  authStyles as styles,
-  globalStyles as gs,
-} from '../../styles/index'
+import {globalMarginStyles as gms, authStyles as styles} from '../../styles/index'
+import {BUTTON_TYPES, KEYBOARD_TYPES, LOGIN_EVENTS, TEXT_TYPES} from '../../constants/strings'
 import {EMAIL_REGEX, PASSWORD_REGEX} from '../../utils/RegexHelper'
 import {images, icons, SCREENS} from '../../constants'
-import {BUTTON_TYPES, KEYBOARD_TYPES, LOGIN_EVENTS, TEXT_TYPES} from '../../constants/strings'
 import {colors} from '../../themes/index'
-
-import WithKeyboardAvoidingView from '../../components/hoc/WithKeyboardAvoidingView'
+import {isIos} from '../../utils/Dimensions'
 
 const Login = ({navigation}) => {
   const [userInfo, setUserInfo] = useState({
@@ -43,12 +38,6 @@ const Login = ({navigation}) => {
       password: pass,
     }))
 
-  const toggleCheckbox = () => {
-    setUserInfo(prevState => ({
-      ...prevState,
-      saveCreds: !userInfo.saveCreds,
-    }))
-  }
   const handleForgotPassword = () => navigation.navigate(SCREENS.FORGOT_PASSWORD)
 
   const validateLogin = () => {
@@ -95,18 +84,11 @@ const Login = ({navigation}) => {
               value={userInfo.password}
               onChangeText={handlePasswordChange}
             />
-            <View style={[gs.row, gs.fullWidth]}>
-              <CustomCheckBox
-                isSelected={userInfo.saveCreds}
-                toggleCheckbox={toggleCheckbox}
-                label={LOGIN_EVENTS.REMEMBER_ME}
-              />
-              <TouchableOpacity onPress={handleForgotPassword}>
-                <RNText type={TEXT_TYPES.SM12} style={{color: colors.blue_ncs}}>
-                  Forgot Password?
-                </RNText>
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={gms.mt10} onPress={handleForgotPassword}>
+              <RNText type={TEXT_TYPES.SM12} style={{color: colors.blue_ncs}}>
+                Forgot Password?
+              </RNText>
+            </TouchableOpacity>
           </View>
         </View>
         <View style={gms.mt20}>
@@ -115,6 +97,17 @@ const Login = ({navigation}) => {
             title={LOGIN_EVENTS.LOGIN}
             onPress={validateLogin}
           />
+        </View>
+        <View style={styles.bigView}>
+          <View style={styles.divider} />
+          <RNText type={TEXT_TYPES.MEDIUM}> or continue with </RNText>
+          <View style={styles.divider} />
+        </View>
+
+        <View style={styles.socials}>
+          <Image source={images.facebook} style={styles.img} />
+          <Image source={images.google} style={styles.img} />
+          {isIos && <Image source={images.apple} style={styles.img} />}
         </View>
         {loading && <CustomLoader />}
       </View>

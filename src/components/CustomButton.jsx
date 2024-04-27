@@ -13,7 +13,7 @@ const CustomButton = ({
   title,
   onPress,
   icon = null,
-  fontSize = theme.light.fontSize.md,
+  fontSize = theme.fontSize.md,
   height = 45,
 }) => {
   const buttonStyles = [
@@ -38,7 +38,7 @@ const CustomButton = ({
       accessible={true}
       accessibilityRole="button"
       accessibilityLabel={title}>
-      {icon && <Image source={icon} style={[styles.icon, gms.mr15]} />}
+      {!!icon && <Image source={icon} style={[styles.icon, gms.mr15]} />}
       <RNText style={textStyles}>{title}</RNText>
     </TouchableOpacity>
   )
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.roboto.regular,
   },
   textPrimary: {
-    fontSize: theme.light.fontSize.md,
+    fontSize: theme.fontSize.md,
   },
   textSecondary: {
     color: colors.text.secondary_light,
