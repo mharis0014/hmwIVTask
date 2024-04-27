@@ -1,13 +1,12 @@
 import {StyleSheet} from 'react-native'
 
-import {screen_height, screen_width} from '../../utils/Dimensions'
+import {isIos, screen_height, screen_width} from '../../utils/Dimensions'
 
-import {globalStyles as gs} from '..'
 import {colors} from '../../themes'
 
 const authStyles = StyleSheet.create({
   container: {
-    ...gs.fill,
+    flex: 1,
     alignItems: 'center',
     backgroundColor: colors.background,
   },
@@ -19,6 +18,28 @@ const authStyles = StyleSheet.create({
     height: 85,
     width: 85,
     marginTop: screen_height / 8,
+  },
+  bigView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: '5%',
+  },
+  divider: {
+    backgroundColor: colors.black_o5,
+    height: 0.5,
+    width: '30%',
+    alignSelf: 'center',
+  },
+  socials: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignSelf: 'center',
+    marginTop: '4%',
+    width: isIos ? '60%' : '40%',
+  },
+  img: {
+    width: 50,
+    height: 50,
   },
 })
 

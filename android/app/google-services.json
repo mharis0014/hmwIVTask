@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "585969258114",
+    "project_id": "hmwivtask-31e1b",
+    "storage_bucket": "hmwivtask-31e1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585969258114:android:18c3f425b09fded2c96e9b",
+        "android_client_info": {
+          "package_name": "com.hmwivtask"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBADQ9X8Rj8HVcSIfp58-lTun1MjGP4bHE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

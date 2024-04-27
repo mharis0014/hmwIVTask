@@ -19,7 +19,7 @@ const CustomTextInput = ({icon, label, isPassword, ...props}) => {
 
   const handleTogglePassword = () => setIsPasswordVisible(!isPasswordVisible)
 
-  const togglePassIcon = isPasswordVisible ? icons.ic_closed_eye_dark : icons.ic_open_eye_dark
+  const togglePassIcon = isPasswordVisible ? icons.ic_closed_eye : icons.ic_open_eye
 
   return (
     <>
@@ -29,7 +29,7 @@ const CustomTextInput = ({icon, label, isPassword, ...props}) => {
         </RNText>
       )}
       <View style={styles.container}>
-        {icon && <Image source={icon} style={styles.icon} />}
+        {!!icon && <Image source={icon} style={styles.icon} />}
         <TextInput
           {...props}
           secureTextEntry={isPassword && !isPasswordVisible}
