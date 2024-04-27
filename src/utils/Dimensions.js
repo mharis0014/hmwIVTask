@@ -1,5 +1,4 @@
 import {Dimensions, Platform, StatusBar} from 'react-native'
-import {heightPercentageToDP as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen'
 
 const {height: screen_height, width: screen_width} = Dimensions.get('window')
 
@@ -20,6 +19,4 @@ export {
   headerHeight,
   footerHeight,
   scrollThreshold,
-  hp,
-  wp,
 }
