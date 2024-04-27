@@ -1,51 +1,96 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import {MMKV} from 'react-native-mmkv'
 
-const saveItem = async (key, value) => {
+const storage = new MMKV()
+
+/**
+ * Saves a string to storage.
+ *
+ * @param key The key to fetch.
+ * @param value The value to store.
+ */
+export const _saveString = (key, value) => {
   try {
-    await AsyncStorage.setItem(key, value)
+    storage.set(key, value)
     return true
   } catch (error) {
-    console.error('Error saving data: ', error)
+    console.error('Error while saving string:', error)
     return false
   }
 }
 
-const removeItem = async key => {
+/**
+ * Saves an object to storage.
+ *
+ * @param key The key to fetch.
+ * @param value The value to store.
+ */
+export const _saveObject = (key, value) => {
   try {
-    await AsyncStorage.removeItem(key)
+    const jsonString = JSON.stringify(value)
+    storage.set(key, jsonString)
+    console.log(`Successfully saved in storage:', ${key}: ${jsonString}`)
     return true
   } catch (error) {
-    console.error('Error removing item: ', error)
+    console.error('Error while saving object:', error)
     return false
   }
 }
 
-const getItem = async key => {
+/**
+ * Loads a string from storage.
+ *
+ * @param key The key to fetch.
+ */
+export const _loadString = key => {
   try {
-    const value = await AsyncStorage.getItem(key)
-    return value !== null ? value : false
+    return storage.getString(key)
   } catch (error) {
-    console.error('Error getting item: ', error)
-    return false
+    console.log('Error while loading string:', error)
+    return null
   }
 }
 
-const clearAll = async () => {
+/**
+ * Loads JSON data from storage.
+ *
+ * @param key The key to fetch.
+ */
+export const _loadData = key => {
   try {
-    const value = await AsyncStorage.clear()
-    console.log({Success: 'Storage Cleared Successfully!'})
-    return value || false
+    const jsonString = _loadString(key)
+    if (jsonString) {
+      const json = JSON.parse(jsonString)
+      return json
+    } else {
+      console.log('No data found for key:', key)
+      return null
+    }
   } catch (error) {
-    console.error('Error Clearing Storage: ', error)
-    return false
+    console.log('Error parsing JSON data:', error)
+    return null
   }
 }
 
-const StorageService = {
-  removeItem,
-  getItem,
-  saveItem,
-  clearAll,
+/**
+ * Removes something from storage.
+ *
+ * @param key The key to kill.
+ */
+export const _removeItem = key => {
+  try {
+    storage.delete(key)
+  } catch (error) {
+    console.error('Error while removing item:', error)
+  }
 }
 
-export default StorageService
+/**
+ * Burn it all to the ground.
+ */
+export const _clearData = () => {
+  try {
+    storage.clearAll()
+  } catch (error) {
+    console.error('Error while clearing data:', error)
+  }
+}

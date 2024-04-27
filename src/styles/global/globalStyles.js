@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
-import {colors, theme} from '../../../themes'
-import {isAndroid} from '@src/utils/helpers/Dimensions'
+import {colors, theme} from '../../themes/index'
+import {isAndroid} from '../../utils/Dimensions'
 
 const globalStyles = StyleSheet.create({
   absoluteZero: {
