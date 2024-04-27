@@ -1,0 +1,42 @@
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true,
+    "react-native/react-native": true
+  },
+  "plugins": ["react", "react-native"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:react-native/all"],
+  "rules": {
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": "off",
+    "react-native/sort-styles": "off",
+    "semi": ["error", "never"],
+    "no-unused-vars": "warn",
+    "react/prop-types": "off",
+    "react/display-name": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ]
+  }
+}

@@ -6,10 +6,20 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
+    "lint-fix": "--fix",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "clean": "cd android && ./gradlew clean",
+    "doctor": "npx react-native doctor",
+    "asset": "npx react-native-asset",
+    "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/src/main/assets/index.android.bundle",
+    "build-android": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^19.2.2",
+    "@react-native-firebase/auth": "^19.2.2",
+    "@react-native-firebase/firestore": "^19.2.2",
+    "babel-plugin-module-resolver": "^5.0.2",
     "react": "18.2.0",
     "react-native": "0.74.0"
   },
