@@ -1,44 +1,50 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {View, Image, TouchableOpacity} from 'react-native'
+import auth from '@react-native-firebase/auth'
 
-import {CustomTextInput, CustomButton, CustomAlert, RNText} from '../../components/index'
+import {CustomTextInput, CustomButton, CustomAlert, RNText} from '../../components'
 import WithKeyboardAvoidingView from '../../components/hoc/WithKeyboardAvoidingView'
 
-import {globalMarginStyles as gms, authStyles as styles} from '../../styles/index'
+import {globalMarginStyles as gms, authStyles as styles, globalStyles as gs} from '../../styles'
 import {BUTTON_TYPES, KEYBOARD_TYPES, LOGIN_EVENTS, TEXT_TYPES} from '../../constants/strings'
 import {EMAIL_REGEX, PASSWORD_REGEX} from '../../utils/RegexHelper'
-import {images, icons, SCREENS, STACKS} from '../../constants'
-import {colors} from '../../themes/index'
-import {isIos} from '../../utils/Dimensions'
+import {images, icons, SCREENS} from '../../constants'
+import {screen_width} from '../../utils/Dimensions'
+import {colors} from '../../themes'
+import {AppContext} from '../../../App'
 
 const Login = ({navigation}) => {
-  const [userInfo, setUserInfo] = useState({
-    email: '',
-    password: '',
-  })
+  const {setUser, setIsLoggedIn} = useContext(AppContext)
 
-  const handleEmailChange = mail =>
-    setUserInfo(prevState => ({
-      ...prevState,
-      email: mail,
-    }))
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const handlePasswordChange = pass =>
-    setUserInfo(prevState => ({
-      ...prevState,
-      password: pass,
-    }))
+  const handleForgotPassword = async () => {
+    if (!email) CustomAlert(LOGIN_EVENTS.EMPTY_EMAIL)
+    if (!EMAIL_REGEX.test(email)) {
+      CustomAlert(LOGIN_EVENTS.INVALID_EMAIL)
+      return
+    }
 
-  const handleForgotPassword = () => navigation.navigate(SCREENS.FORGOT_PASSWORD)
+    try {
+      await auth().sendPasswordResetEmail(email)
+      CustomAlert('Password reset email sent. Please check your inbox.')
+    } catch (error) {
+      console.error(error)
+      CustomAlert('Failed to send password reset email. Please try again.')
+    }
+  }
+
+  const handleSignup = () => navigation.navigate(SCREENS.REGISTER)
 
   const validateLogin = () => {
-    const trimmedPassword = userInfo.password.trim()
+    const trimmedPassword = password.trim()
 
-    !userInfo.email && !trimmedPassword
+    !email && !trimmedPassword
       ? CustomAlert(LOGIN_EVENTS.ADDED_AN_INBOX)
-      : !userInfo.email
+      : !email
       ? CustomAlert(LOGIN_EVENTS.EMPTY_EMAIL)
-      : !EMAIL_REGEX.test(userInfo.email)
+      : !EMAIL_REGEX.test(email)
       ? CustomAlert(LOGIN_EVENTS.INVALID_EMAIL)
       : !trimmedPassword
       ? CustomAlert(LOGIN_EVENTS.EMPTY_PASSWORD)
@@ -46,7 +52,18 @@ const Login = ({navigation}) => {
       ? CustomAlert(LOGIN_EVENTS.INVALID_PASSWORD)
       : !PASSWORD_REGEX.test(trimmedPassword)
       ? CustomAlert(LOGIN_EVENTS.PASSWORD_LENGTH_INVALID)
-      : navigation.navigate(STACKS.USER)
+      : handleLogin()
+  }
+
+  const handleLogin = async () => {
+    try {
+      await auth().signInWithEmailAndPassword(email, password)
+      setIsLoggedIn(true)
+      setUser(auth().currentUser)
+    } catch (error) {
+      console.error(error)
+      CustomAlert('Failed to login. Please check your credentials.')
+    }
   }
 
   return (
@@ -62,8 +79,8 @@ const Login = ({navigation}) => {
               icon={icons.ic_mail}
               placeholder={LOGIN_EVENTS.EMAIL_PLACEHOLDER}
               keyboardType={KEYBOARD_TYPES.EMAIL}
-              value={userInfo.email}
-              onChangeText={handleEmailChange}
+              value={email}
+              onChangeText={setEmail}
             />
             <CustomTextInput
               isPassword
@@ -72,8 +89,8 @@ const Login = ({navigation}) => {
               placeholder={LOGIN_EVENTS.PASSWORD}
               minLength={LOGIN_EVENTS.MIN_LENGTH}
               maxLength={LOGIN_EVENTS.MAX_LENGTH}
-              value={userInfo.password}
-              onChangeText={handlePasswordChange}
+              value={password}
+              onChangeText={setPassword}
             />
             <TouchableOpacity style={gms.mt10} onPress={handleForgotPassword}>
               <RNText type={TEXT_TYPES.SM12} style={{color: colors.blue_ncs}}>
@@ -82,13 +99,15 @@ const Login = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={gms.mt20}>
+
+        <View style={[gms.mt20, {width: screen_width * 0.85}]}>
           <CustomButton
             type={BUTTON_TYPES.PRIMARY}
             title={LOGIN_EVENTS.LOGIN}
             onPress={validateLogin}
           />
         </View>
+
         <View style={styles.bigView}>
           <View style={styles.divider} />
           <RNText type={TEXT_TYPES.MEDIUM}> or continue with </RNText>
@@ -96,10 +115,25 @@ const Login = ({navigation}) => {
         </View>
 
         <View style={styles.socials}>
-          <Image source={images.facebook} style={styles.img} />
-          <Image source={images.google} style={styles.img} />
-          {isIos && <Image source={images.apple} style={styles.img} />}
+          <TouchableOpacity onPress={() => {}} activeOpacity={0.7}>
+            <Image source={images.facebook} style={styles.img} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}} activeOpacity={0.7}>
+            <Image source={images.google} style={styles.img} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}} activeOpacity={0.7}>
+            <Image source={images.apple} style={styles.img} />
+          </TouchableOpacity>
         </View>
+
+        <TouchableOpacity onPress={handleSignup} style={[gms.mv20, gs.row]}>
+          <View style={styles.divider2} />
+          <RNText type={TEXT_TYPES.MEDIUM} style={{color: colors.blue_ncs}}>
+            {' '}
+            don`t have an account ? Signup{' '}
+          </RNText>
+          <View style={styles.divider2} />
+        </TouchableOpacity>
       </View>
     </WithKeyboardAvoidingView>
   )

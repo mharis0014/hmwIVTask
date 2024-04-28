@@ -7,10 +7,9 @@ export const SCREENS = {
   REGISTER: 'Register',
   FORGOT_PASSWORD: 'ForgotPassword',
   HOME: 'Home',
-  REPORT: 'Report',
-  NEW_REPORT: 'NewReport',
-  VIEW_REPORT: 'ViewReport',
-  EDIT_REPORT: 'Edit Report',
+  Task: 'Task',
+  NEW_TASK: 'New Task',
+  EDIT_TASK: 'Edit Task',
 }
 
 export const STACKS = {
