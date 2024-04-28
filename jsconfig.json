@@ -18,7 +18,6 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@constants/*": ["src/constants/*"],
-      "@data/*": ["src/data/*"],
       "@navigation/*": ["src/navigation/*"],
       "@styles/*": ["src/styles/*"],
       "@themes/*": ["src/themes/*"],

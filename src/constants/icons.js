@@ -5,6 +5,7 @@ const ic_closed_eye = require('../assets/icons/ic-closed-eye.png')
 const ic_open_eye = require('../assets/icons/ic-open-eye.png')
 const ic_back = require('../assets/icons/ic-back.png')
 const ic_edit = require('../assets/icons/ic-edit.png')
+const ic_cross = require('../assets/icons/ic-cross.png')
 const ic_filter = require('../assets/icons/ic-filter.png')
 const ic_refresh = require('../assets/icons/ic-refresh.png')
 const ic_search = require('../assets/icons/ic-search.png')
@@ -22,4 +23,5 @@ export default {
   ic_refresh,
   ic_filter,
   ic_mail,
+  ic_cross,
 }
