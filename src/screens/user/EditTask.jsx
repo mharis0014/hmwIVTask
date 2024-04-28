@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useState} from 'react'
 import {View} from 'react-native'
 import firestore from '@react-native-firebase/firestore'
 
@@ -10,38 +10,37 @@ import {
   globalPaddingStyles as gps,
 } from '../../styles'
 
-import {AppContext} from '../../../App'
-import {SCREENS} from '../../constants'
+const EditTask = ({route, navigation}) => {
+  const {taskId, title: initialTitle, description: initialDescription} = route.params
 
-const NewTask = ({navigation}) => {
-  const {user} = useContext(AppContext)
+  const [title, setTitle] = useState(initialTitle)
+  const [description, setDescription] = useState(initialDescription)
 
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-
-  const createTask = async (title, description) => {
+  const updateTask = async (taskId, title, description) => {
     try {
-      const newTaskRef = await firestore().collection('tasks').add({
-        userId: user.uid,
+      await firestore().collection('tasks').doc(taskId).update({
         title,
         description,
       })
-      console.log('Task created with ID: ', newTaskRef.id)
-      navigation.navigate(SCREENS.HOME)
+      CustomAlert('Task updated successfully')
+      navigation.goBack()
     } catch (error) {
-      console.error('Error creating task: ', error)
+      console.error('Error updating task: ', error)
     }
   }
 
-  const onCreate = () =>
-    title === '' || description === ''
-      ? CustomAlert('Please Enter Task Details')
-      : createTask(title, description)
+  const onUpdate = () => {
+    if (!title.trim() || !description.trim()) {
+      CustomAlert('Please enter task details')
+    } else {
+      updateTask(taskId, title, description)
+    }
+  }
 
   return (
     <View style={[gs.screenContainer, gps.p20]}>
       <View style={[gs.fill, gs.center]}>
-        <RNText type={TEXT_TYPES.H3}>CREATE NEW TASK</RNText>
+        <RNText type={TEXT_TYPES.H3}>EDIT TASK</RNText>
       </View>
       <View style={gms.mt10}>
         <CustomTextInput
@@ -62,10 +61,10 @@ const NewTask = ({navigation}) => {
         />
       </View>
       <View style={gms.mt40}>
-        <CustomButton title="Create" type={BUTTON_TYPES.PRIMARY} onPress={onCreate} />
+        <CustomButton title="Update" type={BUTTON_TYPES.PRIMARY} onPress={onUpdate} />
       </View>
     </View>
   )
 }
 
-export default NewTask
+export default EditTask

@@ -48,8 +48,8 @@ const authStyles = StyleSheet.create({
     height: 50,
   },
   icon: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
   },
 })
 

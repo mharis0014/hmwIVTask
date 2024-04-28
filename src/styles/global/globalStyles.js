@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native'
 
-import {colors, theme} from '../../themes/index'
-import {isAndroid} from '../../utils/Dimensions'
+import {colors} from '../../themes'
 
 const globalStyles = StyleSheet.create({
   absoluteZero: {
@@ -31,24 +30,11 @@ const globalStyles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
-  empty: {},
   fill: {
     flex: 1,
   },
-  flexGrowFill: {
-    flexGrow: 1,
-  },
-  flexWrap: {
-    flexWrap: 'wrap',
-  },
   fullWidth: {
     width: '100%',
-  },
-  halfWidth: {
-    width: '50%',
-  },
-  inputPaddingVertical: {
-    paddingVertical: isAndroid ? 10 : theme.spacing.small,
   },
   row: {
     alignItems: 'center',
@@ -57,10 +43,6 @@ const globalStyles = StyleSheet.create({
   },
   screenContainer: {
     backgroundColor: colors.background,
-    flex: 1,
-  },
-  whiteContainer: {
-    backgroundColor: colors.white,
     flex: 1,
   },
 })

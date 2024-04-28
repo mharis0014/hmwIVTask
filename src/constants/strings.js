@@ -48,13 +48,6 @@ export const BUTTON_TYPES = Object.freeze({
   SECONDARY: 'secondary',
 })
 
-export const TOAST_TYPES = Object.freeze({
-  SUCCESS: 'success',
-  ERROR: 'error',
-  WARNING: 'warning',
-  PRIMARY: 'primary',
-})
-
 export const KEYBOARD_TYPES = Object.freeze({
   DEFAULT: 'default',
   NUMBER_PAD: 'number-pad',

@@ -22,17 +22,6 @@ const colors = {
     tertiary: '#6A6C6F',
     white: '#FFFFFF',
   },
-  pagination: {
-    active: '#BFCBD9',
-  },
-  button: {
-    success: '#84C529',
-  },
-  success: '#00FF00',
-  warning: '#FF9500',
-  danger: '#A53922',
-  error: '#FF0000',
-  disabled: '#A8A8A8',
 }
 
 export default colors

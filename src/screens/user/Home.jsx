@@ -73,7 +73,7 @@ const Home = ({navigation}) => {
     const taskItemProps = {
       id: item.id,
       title: item.title,
-      desc: item.desc,
+      description: item.description,
       onDelete: taskId => handleDeleteTask(taskId),
       onEdit: () => {},
     }
@@ -91,11 +91,13 @@ const Home = ({navigation}) => {
 
   return (
     <View style={gs.container}>
-      <CustomButton
-        title="Create New Task"
-        onPress={handleCreateNewTask}
-        type={BUTTON_TYPES.SECONDARY}
-      />
+      <View style={gms.mt15}>
+        <CustomButton
+          title="Create New Task"
+          onPress={handleCreateNewTask}
+          type={BUTTON_TYPES.PRIMARY}
+        />
+      </View>
       <FlatList
         data={tasks}
         renderItem={renderItem}

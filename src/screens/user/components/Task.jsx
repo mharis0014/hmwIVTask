@@ -14,20 +14,19 @@ import {TEXT_TYPES} from '../../../constants/strings'
 import {screen_width} from '../../../utils/Dimensions'
 import {icons} from '../../../constants'
 
-const TaskComponent = ({id, title, desc, onDelete, onEdit}) => {
+const TaskComponent = ({id, title, description, onDelete, onEdit}) => {
   return (
     <View style={styles.container}>
       <View>
-        <RNText type={TEXT_TYPES.H3}>{`Task # ${id}`}</RNText>
-        {title && <RNText type={TEXT_TYPES.SUB_HEADING}>{title}</RNText>}
-        <RNText type={TEXT_TYPES.REGULAR_PRIMARY}>{desc}</RNText>
+        {title && <RNText type={TEXT_TYPES.H3}>{title}</RNText>}
+        <RNText type={TEXT_TYPES.REGULAR_PRIMARY}>{description}</RNText>
       </View>
-      <View>
-        <TouchableOpacity onPress={() => onDelete(id)}>
-          <Image source={icons.ic_cross} style={[styles.icon, gms.mr15, gms.mb10]} />
-        </TouchableOpacity>
+      <View style={styles.row}>
         <TouchableOpacity onPress={() => onEdit(id)}>
-          <Image source={icons.ic_edit} style={[styles.icon, gms.mr15, gms.mt10]} />
+          <Image source={icons.ic_edit} style={styles.icon} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => onDelete(id)}>
+          <Image source={icons.ic_delete} style={styles.icon} />
         </TouchableOpacity>
       </View>
     </View>
@@ -45,8 +44,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   icon: {
-    height: 15,
-    width: 15,
+    height: 16,
+    width: 16,
+    ...gms.mr15,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
 })
 
