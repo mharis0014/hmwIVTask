@@ -38,6 +38,11 @@ export const globalTextStyles = StyleSheet.create({
     fontFamily: fonts.roboto.regular,
     fontSize: theme.fontSize.sm,
   },
+  regularprimary: {
+    color: colors.text.primary,
+    fontFamily: fonts.roboto.regular,
+    fontSize: theme.fontSize.sm,
+  },
   sm10: {
     fontFamily: fonts.roboto.regular,
     fontSize: theme.fontSize.xxs,

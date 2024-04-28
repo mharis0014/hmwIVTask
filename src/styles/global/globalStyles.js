@@ -50,9 +50,6 @@ const globalStyles = StyleSheet.create({
   inputPaddingVertical: {
     paddingVertical: isAndroid ? 10 : theme.spacing.small,
   },
-  negativeZindex: {
-    zIndex: -1,
-  },
   row: {
     alignItems: 'center',
     flexDirection: 'row',

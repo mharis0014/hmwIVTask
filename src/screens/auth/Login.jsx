@@ -1,19 +1,13 @@
 import React, {useState} from 'react'
 import {View, Image, TouchableOpacity} from 'react-native'
 
-import {
-  CustomTextInput,
-  CustomButton,
-  CustomLoader,
-  CustomAlert,
-  RNText,
-} from '../../components/index'
+import {CustomTextInput, CustomButton, CustomAlert, RNText} from '../../components/index'
 import WithKeyboardAvoidingView from '../../components/hoc/WithKeyboardAvoidingView'
 
 import {globalMarginStyles as gms, authStyles as styles} from '../../styles/index'
 import {BUTTON_TYPES, KEYBOARD_TYPES, LOGIN_EVENTS, TEXT_TYPES} from '../../constants/strings'
 import {EMAIL_REGEX, PASSWORD_REGEX} from '../../utils/RegexHelper'
-import {images, icons, SCREENS} from '../../constants'
+import {images, icons, SCREENS, STACKS} from '../../constants'
 import {colors} from '../../themes/index'
 import {isIos} from '../../utils/Dimensions'
 
@@ -22,9 +16,6 @@ const Login = ({navigation}) => {
     email: '',
     password: '',
   })
-  const [loading, setLoading] = useState(false)
-
-  const toggleLoader = () => setLoading(prevState => !prevState)
 
   const handleEmailChange = mail =>
     setUserInfo(prevState => ({
@@ -55,7 +46,7 @@ const Login = ({navigation}) => {
       ? CustomAlert(LOGIN_EVENTS.INVALID_PASSWORD)
       : !PASSWORD_REGEX.test(trimmedPassword)
       ? CustomAlert(LOGIN_EVENTS.PASSWORD_LENGTH_INVALID)
-      : console.log(userInfo, toggleLoader, navigation)
+      : navigation.navigate(STACKS.USER)
   }
 
   return (
@@ -109,7 +100,6 @@ const Login = ({navigation}) => {
           <Image source={images.google} style={styles.img} />
           {isIos && <Image source={images.apple} style={styles.img} />}
         </View>
-        {loading && <CustomLoader />}
       </View>
     </WithKeyboardAvoidingView>
   )
