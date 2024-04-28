@@ -10,6 +10,7 @@ const ic_filter = require('../assets/icons/ic-filter.png')
 const ic_refresh = require('../assets/icons/ic-refresh.png')
 const ic_search = require('../assets/icons/ic-search.png')
 const ic_logout = require('../assets/icons/ic-logout.png')
+const ic_delete = require('../assets/icons/ic-delete.png')
 const ic_img_placeholder = require('../assets/icons/image-placeholder.png')
 
 export default {
@@ -25,5 +26,6 @@ export default {
   ic_filter,
   ic_mail,
   ic_cross,
+  ic_delete,
   ic_logout,
 }

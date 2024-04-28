@@ -10,6 +10,7 @@ import NewTask from '../screens/user/NewTask'
 
 import {authStyles as styles, globalMarginStyles as gms} from '../styles'
 import {CustomAlert} from '../components'
+import EditTask from '../screens/user/EditTask'
 
 const Stack = createNativeStackNavigator()
 
@@ -37,6 +38,7 @@ const AuthNavigator = () => {
         }}
       />
       <Stack.Screen name={SCREENS.NEW_TASK} component={NewTask} />
+      <Stack.Screen name={SCREENS.EDIT_TASK} component={EditTask} />
     </Stack.Navigator>
   )
 }
