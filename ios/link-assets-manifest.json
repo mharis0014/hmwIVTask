@@ -1,0 +1,101 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Roboto-Black.ttf",
+      "sha1": "869d4331ed87830e8f19105aff140f1458655e95"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Bold.ttf",
+      "sha1": "3a4a7ff4fdba5317d6941e2d66e629df6c3c8cf3"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Light.ttf",
+      "sha1": "1f9e268d4e7502ea2d1d34957cbefc620501430d"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Medium.ttf",
+      "sha1": "b5ba3632933756e9f7e8a0f83bfe90c215a768e2"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Regular.ttf",
+      "sha1": "ba879317acdc045b8fa78cb8f948650627d0477c"
+    },
+    {
+      "path": "src/assets/fonts/Roboto-Thin.ttf",
+      "sha1": "2e5609fc4b59d3d133007785e689373573da7d91"
+    },
+    {
+      "path": "src/assets/icons/back.png",
+      "sha1": "290ae04f4c377f9c7955302d27cf194604546133"
+    },
+    {
+      "path": "src/assets/icons/closed_eye.png",
+      "sha1": "9afbb6a308315b7c3544abec10efc5934891a3fb"
+    },
+    {
+      "path": "src/assets/icons/cross.png",
+      "sha1": "f374438a6e46d6ceb25d8b793dd090a123879116"
+    },
+    {
+      "path": "src/assets/icons/delete.png",
+      "sha1": "c18862f658d7ff131080671b46158a742e5cd59d"
+    },
+    {
+      "path": "src/assets/icons/edit.png",
+      "sha1": "f2043e33c2e11bdf2086c67342ed1c8c1e5f8c66"
+    },
+    {
+      "path": "src/assets/icons/filter.png",
+      "sha1": "c96f728f29fb1f387c6b127839feba175387ced5"
+    },
+    {
+      "path": "src/assets/icons/image_placeholder.png",
+      "sha1": "7a8d3b63985da868e8287d9344e96495aff65411"
+    },
+    {
+      "path": "src/assets/icons/logout.png",
+      "sha1": "a615696465273fdfd90504187635253279e4a12d"
+    },
+    {
+      "path": "src/assets/icons/mail.png",
+      "sha1": "a983613f9e1bee8f35b4aa7488ae09abf191f679"
+    },
+    {
+      "path": "src/assets/icons/open_eye.png",
+      "sha1": "d0eac9087100038db3bf472daeaa283ef40d90fd"
+    },
+    {
+      "path": "src/assets/icons/password.png",
+      "sha1": "eecb32ecc528f689d6124e7a9e6260af16994a7d"
+    },
+    {
+      "path": "src/assets/icons/profile.png",
+      "sha1": "3c02fa5fb525d163f5c229da77a3240fd57506fa"
+    },
+    {
+      "path": "src/assets/icons/refresh.png",
+      "sha1": "41346a668725ba00d7ed00e087e0f3067947ef3f"
+    },
+    {
+      "path": "src/assets/icons/search.png",
+      "sha1": "0c6a94666494a19949df44cc40e71bc2e8ca68a2"
+    },
+    {
+      "path": "src/assets/images/apple.png",
+      "sha1": "17406dc89b7a76b186cc0ec6d0d8e1b1d41d1d23"
+    },
+    {
+      "path": "src/assets/images/facebook.png",
+      "sha1": "f32b64519b5860f3eff3b3a1947cfa4e47cb5642"
+    },
+    {
+      "path": "src/assets/images/google.png",
+      "sha1": "0a0ab6268ed4ed594f4a0264a480743611cbe76d"
+    },
+    {
+      "path": "src/assets/images/logo.png",
+      "sha1": "2136e39b6d35d7c49303bb724636fb55d1b57a29"
+    }
+  ]
+}
