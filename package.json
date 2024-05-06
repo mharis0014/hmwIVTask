@@ -12,7 +12,7 @@
     "clean": "cd android && ./gradlew clean",
     "doctor": "npx react-native doctor",
     "asset": "npx react-native-asset",
-    "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/src/main/assets/index.android.bundle",
+    "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle",
     "build-android": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
